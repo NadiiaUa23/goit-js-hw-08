@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+li {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 24px;
+    row-gap: 48px;
+    max-width: 1439px;
+}
