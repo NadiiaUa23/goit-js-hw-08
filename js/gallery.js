@@ -77,7 +77,7 @@ preview:
 // console.log(images);
 
 
-{/* <li class="gallery-item">
+/* <li class="gallery-item">
   <a class="gallery-link" href="large-image.jpg">
     <img
       class="gallery-image"
@@ -86,7 +86,7 @@ preview:
       alt="Image description"
     />
   </a>
-</li> */}
+</li> */
 
 const gallery = document.querySelector(".gallery");
 const galleryItems = images.map((image) => {
@@ -96,7 +96,7 @@ const galleryItems = images.map((image) => {
 
   const linkItem = document.createElement('a');
   linkItem.className ="gallery-link";
-  linkItem.href. = image.original;
+  linkItem.href = image.original;
 
   const imageElement = document.createElement('img');
   imageElement.className ="gallery-image";
@@ -108,7 +108,7 @@ const galleryItems = images.map((image) => {
 
 
 
-  linkItem.appendChild(imageElement)
+  linkItem.appendChild(imageElement);
   listItem.appendChild(linkItem);
   return listItem;
 });
