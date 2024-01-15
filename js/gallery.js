@@ -76,16 +76,36 @@ preview:
 
 // console.log(images);
 
+
+{/* <li class="gallery-item">
+  <a class="gallery-link" href="large-image.jpg">
+    <img
+      class="gallery-image"
+      src="small-image.jpg"
+      data-source="large-image.jpg"
+      alt="Image description"
+    />
+  </a>
+</li> */}
+
 const gallery = document.querySelector(".gallery");
 const galleryItems = images.map((image) => {
+
   const listItem = document.createElement("li");
+  listItem.className ="gallery-item";
+
   const linkItem = document.createElement('a');
+  linkItem.className ="gallery-link";
+  linkItem.href. = image.original;
+
   const imageElement = document.createElement('img');
+  imageElement.className ="gallery-image";
+ 
 
   imageElement.src = image.preview;
-  imageElement.alt = image.description;
-  imageElement.style.width="360px";
-  imageElement.style.height="200px";
+  imageElement.alt = image.description; 
+  imageElement.dataSource = linkItem;
+
 
 
   linkItem.appendChild(imageElement)
@@ -94,3 +114,17 @@ const galleryItems = images.map((image) => {
 });
 
 gallery.append(...galleryItems);
+
+console.log(gallery);
+
+
+
+// добавляем клик 
+
+//шаблон - const box = document.querySelector(".box");
+// box.addEventListener("click", function (event) {
+// 	console.log(event.target); // Елемент, на якому відбулась подія click
+// });
+
+//не забить про остановку спліваний - что бі не скачивалось
+//event.stopPropagation()

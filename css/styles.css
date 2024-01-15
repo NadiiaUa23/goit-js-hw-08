@@ -19,3 +19,8 @@ ul {
     row-gap: 48px;
     max-width: 1439px;
 }
+
+.gallery-image {
+    width: 360px;
+    height: 200px;
+}
