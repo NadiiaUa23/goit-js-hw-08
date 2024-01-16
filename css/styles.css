@@ -15,8 +15,8 @@ ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    column-gap: 24px;
-    row-gap: 24px;
+    column-gap: 10px;
+    row-gap: 10px;
     max-width: 1439px;
 
 }
@@ -24,4 +24,12 @@ ul {
 .gallery-image {
     width: 360px;
     height: 200px;
+    cursor: pointer;
+
+}
+
+.gallery-image:hover {
+    /* transition: linear;
+    transition-duration: 100ms; 
+    transform: scale(2); */
 }
