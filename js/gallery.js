@@ -74,27 +74,13 @@ preview:
 ,
 ];
 
-/* <li class="gallery-item">
-  <a class="gallery-link" href="large-image.jpg">
-    <img
-      class="gallery-image"
-      src="small-image.jpg"
-      data-source="large-image.jpg"
-      alt="Image description"
-    />
-  </a>
-</li> */
 
 const gallery = document.querySelector(".gallery");
-
-
 
 const galleryItems = images.map((image) => {
 
   const listItem = document.createElement("li");
   listItem.className ="gallery-item";
-
-
 
   const imageElement = document.createElement('img');
   imageElement.className ="gallery-image";
@@ -106,16 +92,38 @@ const galleryItems = images.map((image) => {
   linkItem.className ="gallery-link";
   linkItem.href = image.original;
   linkItem.addEventListener("click", (event)=> {
-event.preventDefault();});
+event.preventDefault();
+});
 
   linkItem.appendChild(imageElement);
   listItem.appendChild(linkItem);
   
+
   return listItem;
 });
 
 gallery.append(...galleryItems);
 console.log(gallery);
+
+
+// Саме час додати функціонал прослуховування кліка по 
+//елементах галереї та отримання посилання на велике зображення при кліку.
+
+gallery.addEventListener("click", (event) => {
+    // if (event.target.tagname === "A"){
+    //     event.preventDefault();
+    
+    const imageElement= 
+    event.target.querySelector("img");
+
+    if (imageElement){
+        const largeImg = imageElement.getAttribute("data-sourse");
+    console.log("original: ",largeImg);}
+    
+});
+
+
+
 
 
 
