@@ -89,6 +89,7 @@ preview:
 </li> */
 
 const gallery = document.querySelector(".gallery");
+
 const galleryItems = images.map((image) => {
 
   const listItem = document.createElement("li");
@@ -97,27 +98,27 @@ const galleryItems = images.map((image) => {
   const linkItem = document.createElement('a');
   linkItem.className ="gallery-link";
   linkItem.href = image.original;
+  //не забить про остановку спліваний - что бі не скачивалось
+//event.stopPropagation()
+linkItem.addEventListener("click", 
+function(event) {
+    event.stopPropagation();
+})
 
   const imageElement = document.createElement('img');
   imageElement.className ="gallery-image";
- 
-
   imageElement.src = image.preview;
   imageElement.alt = image.description; 
-  imageElement.dataSource = linkItem;
-
-
+  imageElement.setAttribute("data-source" , image.original);
 
   linkItem.appendChild(imageElement);
   listItem.appendChild(linkItem);
+  
   return listItem;
 });
 
 gallery.append(...galleryItems);
-
 console.log(gallery);
-
-
 
 // добавляем клик 
 
@@ -126,5 +127,12 @@ console.log(gallery);
 // 	console.log(event.target); // Елемент, на якому відбулась подія click
 // });
 
-//не забить про остановку спліваний - что бі не скачивалось
-//event.stopPropagation()
+
+
+
+
+
+
+
+
+
