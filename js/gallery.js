@@ -74,9 +74,6 @@ preview:
 ,
 ];
 
-// console.log(images);
-
-
 /* <li class="gallery-item">
   <a class="gallery-link" href="large-image.jpg">
     <img
@@ -90,26 +87,26 @@ preview:
 
 const gallery = document.querySelector(".gallery");
 
+
+
 const galleryItems = images.map((image) => {
 
   const listItem = document.createElement("li");
   listItem.className ="gallery-item";
 
-  const linkItem = document.createElement('a');
-  linkItem.className ="gallery-link";
-  linkItem.href = image.original;
-  //не забить про остановку спліваний - что бі не скачивалось
-//event.stopPropagation()
-linkItem.addEventListener("click", 
-function(event) {
-    event.stopPropagation();
-})
+
 
   const imageElement = document.createElement('img');
   imageElement.className ="gallery-image";
   imageElement.src = image.preview;
   imageElement.alt = image.description; 
   imageElement.setAttribute("data-source" , image.original);
+
+  const linkItem = document.createElement('a');
+  linkItem.className ="gallery-link";
+  linkItem.href = image.original;
+  linkItem.addEventListener("click", (event)=> {
+event.preventDefault();});
 
   linkItem.appendChild(imageElement);
   listItem.appendChild(linkItem);
@@ -120,12 +117,10 @@ function(event) {
 gallery.append(...galleryItems);
 console.log(gallery);
 
-// добавляем клик 
 
-//шаблон - const box = document.querySelector(".box");
-// box.addEventListener("click", function (event) {
-// 	console.log(event.target); // Елемент, на якому відбулась подія click
-// });
+
+
+
 
 
 

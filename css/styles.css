@@ -16,11 +16,21 @@ ul {
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 24px;
-    row-gap: 48px;
+    row-gap: 24px;
     max-width: 1439px;
+
 }
 
 .gallery-image {
     width: 360px;
     height: 200px;
 }
+
+
+
+height: 696px;
+
+flex-direction: column;
+
+align-items: flex-start;
+gap: 24px;
