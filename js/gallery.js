@@ -84,8 +84,8 @@ const galleryItems = images.map((image, index) => {
   const linkItem = document.createElement('a');
   linkItem.className ="gallery-link";
   linkItem.href = image.original;
-  //добавим индекс для опередения картинки
-  linkItem.setAttribute("data-index", index )
+  
+
 
 
 const imageElement = document.createElement('img');
@@ -112,25 +112,29 @@ console.log(gallery);
 //елементах галереї та отримання посилання на велике зображення при кліку.
 
 gallery.addEventListener("click", (event) => {
-//добавим что бі не скачивало картинку
 event.preventDefault();
 
-const targetLink = 
-event.target.closest(".gallery-link");
+const targetLink =event.target.closest(".gallery-link");
 
-if (targetLink) {
-    const index = parseInt(targetLink.getAttribute("data-index"), 10);
-    const largeImg = images[index].original;
+
+
+    console.log(targetLink);
+
+}
+
+
+
+
+
 
 //модальное окно 
 
 
-}
- 
-});
+);
 
 
-
+//добавим - не скачивало картинку
+// 
 
 
 
