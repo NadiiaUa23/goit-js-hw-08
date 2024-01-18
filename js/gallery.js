@@ -77,23 +77,25 @@ preview:
 
 const gallery = document.querySelector(".gallery");
 
-const galleryItems = images.map((image) => {
+const galleryItems = images.map((image, index) => {
   const listItem = document.createElement("li");
   listItem.className ="gallery-item";
 
-  const imageElement = document.createElement('img');
+  const linkItem = document.createElement('a');
+  linkItem.className ="gallery-link";
+  linkItem.href = image.original;
+  //добавим индекс для опередения картинки
+  linkItem.setAttribute("data-index", index )
+
+
+const imageElement = document.createElement('img');
   imageElement.className ="gallery-image";
   imageElement.src = image.preview;
   imageElement.alt = image.description; 
   imageElement.setAttribute("data-source" , image.original);
 
-  const linkItem = document.createElement('a');
-  linkItem.className ="gallery-link";
-  linkItem.href = image.original;
-  linkItem.addEventListener("click", (event)=> {
-event.preventDefault();
-});
 
+  //добавляем что куда
   linkItem.appendChild(imageElement);
   listItem.appendChild(linkItem);
   
@@ -101,6 +103,7 @@ event.preventDefault();
   return listItem;
 });
 
+//новое добавим в галерею
 gallery.append(...galleryItems);
 console.log(gallery);
 
@@ -109,8 +112,21 @@ console.log(gallery);
 //елементах галереї та отримання посилання на велике зображення при кліку.
 
 gallery.addEventListener("click", (event) => {
+//добавим что бі не скачивало картинку
+event.preventDefault();
 
- console.log(event.targer);
+const targetLink = 
+event.target.closest(".gallery-link");
+
+if (targetLink) {
+    const index = parseInt(targetLink.getAttribute("data-index"), 10);
+    const largeImg = images[index].original;
+
+//модальное окно 
+
+
+}
+ 
 });
 
 
