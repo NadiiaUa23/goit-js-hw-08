@@ -77,7 +77,7 @@ preview:
 
 const gallery = document.querySelector(".gallery");
 
-const galleryItems = images.map((image, index) => {
+const galleryItems = images.map((image) => {
   const listItem = document.createElement("li");
   listItem.className ="gallery-item";
 
@@ -112,29 +112,14 @@ console.log(gallery);
 //елементах галереї та отримання посилання на велике зображення при кліку.
 
 gallery.addEventListener("click", (event) => {
+const targetLink = event.target.closest(".gallery-link");
 event.preventDefault();
-
-const targetLink =event.target.closest(".gallery-link");
-
-
-
     console.log(targetLink);
-
-}
-
-
-
-
+});
+ 
 
 
 //модальное окно 
-
-
-);
-
-
-//добавим - не скачивало картинку
-// 
 
 
 
