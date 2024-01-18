@@ -78,7 +78,6 @@ preview:
 const gallery = document.querySelector(".gallery");
 
 const galleryItems = images.map((image) => {
-
   const listItem = document.createElement("li");
   listItem.className ="gallery-item";
 
@@ -110,19 +109,9 @@ console.log(gallery);
 //елементах галереї та отримання посилання на велике зображення при кліку.
 
 gallery.addEventListener("click", (event) => {
-    // if (event.target.tagname === "A"){
-    //     event.preventDefault();
-    
-    const imageElement= 
-    event.target.querySelector("img");
 
-    if (imageElement){
-        const largeImg = imageElement.getAttribute("data-sourse");
-    console.log("original: ",largeImg);}
-    
+ console.log(event.targer);
 });
-
-
 
 
 
