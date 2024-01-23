@@ -100,31 +100,31 @@ const imageElement = document.createElement('img');
   return listItem;
 });
 
-//новое добавим в галерею
+// сщзданое новое добавим в галерею
 gallery.append(...galleryItems);
 console.log(gallery);
 
 
-// Саме час додати функціонал прослуховування кліка по 
+//  добавляем функціонал прослуховування кліка по 
 //елементах галереї та отримання посилання на велике зображення при кліку з бібліотекаю
 
 gallery.addEventListener("click", (event) => {
 const targetLink = event.target.closest(".gallery-link");
-
+// если мимо сілки -картинки верни мне галерею
 if (!targetLink) return;
-
+// приостановить загрузку картинки на комп 
   event.preventDefault();  
-
-  const largeImgeSrc =targetLink.querySelector('.gallery-image').getAttribute("data-source");
+// создадим картинку с большим разрешением и в консоль  сілку на большое разрешение
+  const largeImgeSrc = targetLink.querySelector('.gallery-image').getAttribute("data-source");
 console.log(largeImgeSrc);
 
-// з бібліотеки basicLightbox
+// сщздаем свое окно з бібліотеки basicLightbox
 const myModal = basicLightbox.create(
     `<img width="1112" height="640" 
     src="${largeImgeSrc}">`,
 
-    //добавим только закріть с помощью кнопки в єтом модалке
-    {onClose : ()=> {
+    
+    {onClose: () => {
         window.removeEventListener('keydown', handleKeyPress);
     }
     }
@@ -139,6 +139,8 @@ window.addEventListener('keydown', handleKeyPress);
  function handleKeyPress(event) {
     if (event.key === 'Escape') {
         myModal.close();
+
+        window.removeEventListener('keydown', handleKeyPress);
     }
  }
 });
