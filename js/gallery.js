@@ -74,32 +74,29 @@ preview:
 ,
 ];
 
-
 const gallery = document.querySelector(".gallery");
 
 const galleryItems = images.map((image) => {
-  const listItem = document.createElement("li");
-  listItem.className ="gallery-item";
+
+   const listItem = document.createElement("li");
+     listItem.className ="gallery-item";
 
   const linkItem = document.createElement('a');
-  linkItem.className ="gallery-link";
-  linkItem.href = image.original;
+     linkItem.className ="gallery-link";
+     linkItem.href = image.original;
   
 
-
-
 const imageElement = document.createElement('img');
-  imageElement.className ="gallery-image";
-  imageElement.src = image.preview;
-  imageElement.alt = image.description; 
-  imageElement.setAttribute("data-source" , image.original);
+     imageElement.className ="gallery-image";
+     imageElement.src = image.preview;
+     imageElement.alt = image.description; 
+     imageElement.setAttribute("data-source" , image.original);
 
 
   //добавляем что куда
   linkItem.appendChild(imageElement);
   listItem.appendChild(linkItem);
   
-
   return listItem;
 });
 
@@ -109,27 +106,41 @@ console.log(gallery);
 
 
 // Саме час додати функціонал прослуховування кліка по 
-//елементах галереї та отримання посилання на велике зображення при кліку.
+//елементах галереї та отримання посилання на велике зображення при кліку з бібліотекаю
 
 gallery.addEventListener("click", (event) => {
 const targetLink = event.target.closest(".gallery-link");
-event.preventDefault();
-    console.log(targetLink);
-});
+
+if (!targetLink) return;
+
+  event.preventDefault();  
+
+  const largeImgeSrc =targetLink.querySelector('.gallery-image').getAttribute("data-source");
+console.log(largeImgeSrc);
+
+// з бібліотеки basicLightbox
+const myModal = basicLightbox.create(
+    `<img width="1112" height="640" 
+    src="${largeImgeSrc}">`,
+
+    //добавим только закріть с помощью кнопки в єтом модалке
+    {onClose : ()=> {
+        window.removeEventListener('keydown', handleKeyPress);
+    }
+    }
+);
+
+myModal.show();
+console.log(myModal);
+
+//тут добавим кнопку esc при нажатии
+window.addEventListener('keydown', handleKeyPress);
  
-
-
-//модальное окно 
-
-
-
-
-
-
-
-
-
-
-
+ function handleKeyPress(event) {
+    if (event.key === 'Escape') {
+        myModal.close();
+    }
+ }
+});
 
 
