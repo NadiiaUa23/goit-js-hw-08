@@ -136,13 +136,13 @@ console.log(myModal);
 //тут добавим кнопку esc при нажатии
 window.addEventListener('keydown', handleKeyPress);
  
- function handleKeyPress(event) {
+  function handleKeyPress(event) {
     if (event.key === 'Escape') {
         myModal.close();
 
         window.removeEventListener('keydown', handleKeyPress);
     }
- }
+  }
 });
 
 
