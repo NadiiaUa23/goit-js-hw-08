@@ -7,6 +7,7 @@ const images=[ {
         description: "Hokkaido Flower",
 }
 
+
 ,
 {
 preview:
@@ -76,33 +77,22 @@ preview:
 
 const gallery = document.querySelector(".gallery");
 
-const galleryItems = images.map((image) => {
+//використання рядка шаблону з .insertAdjacentHTML (targetElement.insertAdjacentHTML(position, text);)
+gallery.insertAdjacentHTML("beforeend", images.map((image) => `
+<li class="gallery-item">
+  <a class="gallery-link" href="${image.original}">
+    <img
+      class="gallery-image"
+      src="${image.preview}"
+      data-source="${image.original}"
+      alt="${image.description}"
+    />
+  </a>
+</li>
+`).join("")
+);
 
-   const listItem = document.createElement("li");
-     listItem.className ="gallery-item";
 
-  const linkItem = document.createElement('a');
-     linkItem.className ="gallery-link";
-     linkItem.href = image.original;
-  
-
-const imageElement = document.createElement('img');
-     imageElement.className ="gallery-image";
-     imageElement.src = image.preview;
-     imageElement.alt = image.description; 
-     imageElement.setAttribute("data-source" , image.original);
-
-
-  //добавляем что куда
-  linkItem.appendChild(imageElement);
-  listItem.appendChild(linkItem);
-  
-  return listItem;
-});
-
-// сщзданое новое добавим в галерею
-gallery.append(...galleryItems);
-console.log(gallery);
 
 
 //  добавляем функціонал прослуховування кліка по 
@@ -133,7 +123,8 @@ const myModal = basicLightbox.create(
 myModal.show();
 console.log(myModal);
 
-//тут добавим кнопку esc при нажатии
+
+
 window.addEventListener('keydown', handleKeyPress);
  
   function handleKeyPress(event) {
