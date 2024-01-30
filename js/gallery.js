@@ -93,14 +93,12 @@ gallery.insertAdjacentHTML("beforeend", images.map((image) => `
 );
 
 
-
-
 //  добавляем функціонал прослуховування кліка по 
 //елементах галереї та отримання посилання на велике зображення при кліку з бібліотекаю
 
 gallery.addEventListener("click", (event) => {
 const targetLink = event.target.closest(".gallery-link");
-// если мимо сілки -картинки верни мне галерею
+// если мимо силки -картинки верни мне галерею
 if (!targetLink) return;
 // приостановить загрузку картинки на комп 
   event.preventDefault();  
@@ -108,32 +106,27 @@ if (!targetLink) return;
   const largeImgeSrc = targetLink.querySelector('.gallery-image').getAttribute("data-source");
 console.log(largeImgeSrc);
 
-// сщздаем свое окно з бібліотеки basicLightbox
+// сoздаем модальное  окно з бібліотеки basicLightbox
 const myModal = basicLightbox.create(
     `<img width="1112" height="640" 
     src="${largeImgeSrc}">`,
 
-    
-    {onClose: () => {
-        window.removeEventListener('keydown', handleKeyPress);
-    }
-    }
+    { onClose: () => {
+        window.removeEventListener('keydown', handleKeyPress)}}
 );
 
 myModal.show();
-console.log(myModal);
 
 
-
+//слухачь на зактиття клавіатури esc 
 window.addEventListener('keydown', handleKeyPress);
  
   function handleKeyPress(event) {
     if (event.key === 'Escape') {
         myModal.close();
-
-        window.removeEventListener('keydown', handleKeyPress);
     }
   }
+  
 });
 
 
