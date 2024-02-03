@@ -75,6 +75,8 @@ preview:
 ,
 ];
 
+
+
 const gallery = document.querySelector(".gallery");
 
 //використання рядка шаблону з .insertAdjacentHTML (targetElement.insertAdjacentHTML(position, text);)
@@ -104,7 +106,7 @@ if (!targetLink) return;
   event.preventDefault();  
 // создадим картинку с большим разрешением и в консоль  сілку на большое разрешение
   const largeImgeSrc = targetLink.querySelector('.gallery-image').getAttribute("data-source");
-console.log(largeImgeSrc);
+// console.log(largeImgeSrc);
 
 // сoздаем модальное  окно з бібліотеки basicLightbox
 const myModal = basicLightbox.create(
@@ -126,7 +128,7 @@ window.addEventListener('keydown', handleKeyPress);
         myModal.close();
     }
   }
-  
+
 });
 
 
