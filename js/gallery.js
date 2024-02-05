@@ -113,8 +113,10 @@ const myModal = basicLightbox.create(
     `<img width="1112" height="640" 
     src="${largeImgeSrc}">`,
 
-    { onClose: () => {
-        window.removeEventListener('keydown', handleKeyPress)}}
+    {
+        onShow: () => { window.addEventListener('keydown', handleKeyPress); },
+        onClose: () => { window.removeEventListener('keydown', handleKeyPress); }
+      }
 );
 
 myModal.show();
